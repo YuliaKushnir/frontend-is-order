@@ -1,5 +1,9 @@
+// export const getRoles = (tokenData) => {
+//   return tokenData?.resource_access?.["oauth2-pkce-client"]?.roles || [];
+// };
+
 export const getRoles = (tokenData) => {
-  return tokenData?.resource_access?.["oauth2-pkce-client"]?.roles || [];
+  return tokenData?.realm_access?.roles || [];
 };
 
 export const hasRole = (tokenData, role) => {
