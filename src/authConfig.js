@@ -1,4 +1,4 @@
-const BASE_URL = "/api"
+const BASE_URL = "/auth"
 
 export const authConfig = {
   clientId: 'oauth2-pkce-client',
