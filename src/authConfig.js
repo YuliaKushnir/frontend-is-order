@@ -7,10 +7,10 @@
 // }
 
 export const authConfig = {
-    clientId: 'gateway-client',
+    clientId: 'frontend-client',
     authorizationEndpoint: `${window.location.origin}/realms/cloud-realm/protocol/openid-connect/auth`,
     tokenEndpoint: `${window.location.origin}/realms/cloud-realm/protocol/openid-connect/token`,
-    redirectUri: 'https://34.116.235.108',
+    redirectUri: window.location.origin,
     scope: 'openid profile email offline_access',
     onRefreshTokenExpire: (event) => event.logIn(),
   }
