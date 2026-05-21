@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = 'http://gateway-service:8080/api';
+// const API_URL = window.location.origin + '/api';
+const API_URL = '/api';
 
 const api = axios.create({
     baseURL:API_URL
