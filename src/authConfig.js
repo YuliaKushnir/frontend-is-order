@@ -1,9 +1,7 @@
-const BASE_URL = "/auth"
-
 export const authConfig = {
   clientId: 'oauth2-pkce-client',
-  authorizationEndpoint: `${BASE_URL}/realms/cloud-realm/protocol/openid-connect/auth`,
-  tokenEndpoint: `${BASE_URL}/realms/cloud-realm/protocol/openid-connect/token`,
+  authorizationEndpoint: `/realms/cloud-realm/protocol/openid-connect/auth`,
+  tokenEndpoint: `/realms/cloud-realm/protocol/openid-connect/token`,
   redirectUri: window.location.origin,
   scope: 'openid profile email offline_access',
 }
