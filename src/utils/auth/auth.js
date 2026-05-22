@@ -1,5 +1,5 @@
 export const getRoles = (tokenData) => {
-  return tokenData?.resource_access?.["order-processing"]?.roles || [];
+  return tokenData?.resource_access?.["garment-print"]?.roles || [];
 };
 
 // export const getRoles = (tokenData) => {
