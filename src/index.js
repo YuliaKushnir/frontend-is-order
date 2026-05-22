@@ -15,7 +15,9 @@ import { authConfig } from './authConfig';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider authConfig={authConfig} autoLogin={false} loadingComponent={<div>Loading...</div>}>
+    <AuthProvider authConfig={authConfig} 
+    // autoLogin={false} 
+    loadingComponent={<div>Loading...</div>}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <App />

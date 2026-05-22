@@ -10,14 +10,21 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
+    console.log("Inside api.interceptors.request.use((config) ")
+
 
     if (token) {
         config.headers['Authorization'] = `Bearer ${token}`;
+        console.log("config.headers['Authorization'] = `Bearer ${token}`; = ", config.headers['Authorization'])
     }
 
     if (userId) {
         config.headers['X-User-ID'] = userId;
+                console.log("config.headers['X-User-ID'] ", config.headers['X-User-ID'])
+
     }
+    
+
     return config;
 }
 );
@@ -26,10 +33,14 @@ const unauthorizedApi = axios.create({ baseURL:API_URL});
 
 
 export const getAllProducts = (filters) => unauthorizedApi.post('/products/_list', filters);
-export const addProduct = (formData) => api.post("/products", formData, {
+// export const addProduct = (formData) => api.post("/products", formData, {
+//     headers: { "Content-Type": "multipart/form-data" }, });
+    export const addProduct = (formData) => unauthorizedApi.post("/products", formData, {
     headers: { "Content-Type": "multipart/form-data" }, });
 export const getProductById = (id) => unauthorizedApi.get(`/products/${id}`);
-export const updateProduct = (id, formData) => api.patch(`/products/${id}`, formData, {
+// export const updateProduct = (id, formData) => api.patch(`/products/${id}`, formData, {
+//     headers: { "Content-Type": "multipart/form-data" }, });
+    export const updateProduct = (id, formData) => unauthorizedApi.patch(`/products/${id}`, formData, {
     headers: { "Content-Type": "multipart/form-data" }, });
 export const deleteProduct = (id) => api.delete(`/products/${id}`);
 export const searchProducts = (query) => unauthorizedApi.get(`/products/search?query=${query}`);
