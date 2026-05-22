@@ -8,7 +8,7 @@
 //   }
 
 export const authConfig = {
-  clientId: 'frontend-client',
+  clientId: 'gateway-client',
   authorizationEndpoint: 'https://34.116.235.108/realms/cloud-realm/protocol/openid-connect/auth',
   tokenEndpoint: 'https://34.116.235.108/realms/cloud-realm/protocol/openid-connect/token',
   redirectUri: window.location.origin,
