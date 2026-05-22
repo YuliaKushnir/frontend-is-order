@@ -16,8 +16,6 @@ const authSlice = createSlice({
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       localStorage.setItem('userId', action.payload.user.sub);
-      console.log("userId = ", user?.sub, " user ", user)
-
     },
     // setCredentials: (state, action) => {
     //   const user = action.payload.user;

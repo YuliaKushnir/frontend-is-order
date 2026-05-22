@@ -20,7 +20,6 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from './store/authSlice';
 import { AuthContext } from 'react-oauth2-code-pkce';
 import UsersPage from './app/users/pages/UsersPage';
-// import Navbar from './shared/components/navigation/Navbar';
 
 function App() {
   const { token, tokenData } = useContext(AuthContext);
