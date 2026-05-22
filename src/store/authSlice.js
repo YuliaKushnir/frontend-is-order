@@ -8,27 +8,27 @@ const authSlice = createSlice({
     userId: localStorage.getItem('userId') | null
   },
   reducers: {
-    setCredentials: (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.userId = action.payload.user.sub;
-
-      localStorage.setItem('token', action.payload.token);
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
-      localStorage.setItem('userId', action.payload.user.sub);
-    },
     // setCredentials: (state, action) => {
-    //   const user = action.payload.user;
-
-    //   state.user = user;
+    //   state.user = action.payload.user;
     //   state.token = action.payload.token;
-    //   state.userId = user?.sub || null;
+    //   state.userId = action.payload.user.sub;
 
     //   localStorage.setItem('token', action.payload.token);
-    //   localStorage.setItem('user', JSON.stringify(user));
-    //   localStorage.setItem('userId', user?.sub || '');
-    //   console.log("userId", user?.sub, " user ", user)
+    //   localStorage.setItem('user', JSON.stringify(action.payload.user));
+    //   localStorage.setItem('userId', action.payload.user.sub);
     // },
+    setCredentials: (state, action) => {
+      const user = action.payload.user;
+
+      state.user = user;
+      state.token = action.payload.token;
+      state.userId = user?.sub || null;
+
+      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('userId', user?.sub || '');
+      console.log("userId", user?.sub, " user ", user)
+    },
     logout: (state) => {
       state.user = null;
       state.token = null;
