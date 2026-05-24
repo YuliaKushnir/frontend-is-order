@@ -236,8 +236,12 @@ export default function OrderDetailsRightPanel({ order }) {
         Загалом: {calcOrderTotal()} грн
       </Typography>
 
-      <Typography mt={1} fontSize={16}>
-        Спосіб доставки: {user.address || "-"}
+      {/* <Typography mt={1} fontSize={16}>
+        Спосіб доставки: {user?.address || "-"}
+      </Typography> */}
+
+      <Typography sx={{ mb: 2, fontSize: 15, fontWeight: 500 }} >
+        Спосіб доставки: { user ? `${user.address || ""}` : "-" }
       </Typography>
 
     </Box>
