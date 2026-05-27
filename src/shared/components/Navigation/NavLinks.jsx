@@ -19,7 +19,7 @@ const NavLinks = () => {
 
   return (
     <ul className="nav-links">
-      <li><NavLink to="/products" end>ТОВАРИ</NavLink></li>
+      <li><NavLink to="/products" end>КАТАЛОГ</NavLink></li>
 
       {hasAnyRole(tokenData, ["ROLE_MANAGER", "ROLE_ADMIN"]) && (
       < li><NavLink to="/stock">СКЛАД</NavLink></li>
@@ -37,6 +37,10 @@ const NavLinks = () => {
         <li><NavLink to={`/users`}>КОРИСТУВАЧІ</NavLink></li>
       )}
 
+      {hasAnyRole(tokenData, ["ROLE_MANAGER", "ROLE_EXECUTOR", "ROLE_ADMIN"]) && (
+        <li><NavLink to="/statistics">СТАТИСТИКА</NavLink></li>
+      )}
+      
       { !token ? (
         <li><Button onClick={() => { logIn(); }}>ОСОБИСТИЙ КАБІНЕТ</Button></li>
       ) : (

@@ -82,3 +82,5 @@ export const deleteOrder = (id) => api.delete(`/orders/${id}`);
 export const updateOrder = (id, formData) => api.put(`/orders/${id}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
+
+export const getOrderStatistics = (data) => api.post("/orders/statistics", data);

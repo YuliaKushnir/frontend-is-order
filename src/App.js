@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from './store/authSlice';
 import { AuthContext } from 'react-oauth2-code-pkce';
 import UsersPage from './app/users/pages/UsersPage';
+import StatisticsPage from 'app/statistics/pages/StatisticsPage';
 
 function App() {
   const { token, tokenData } = useContext(AuthContext);
@@ -57,6 +58,8 @@ function App() {
 
           <Route path="/cart" element={<CartPage />} />
           <Route path="/account/:userId" element={<AccountPage />} />
+
+          <Route path="/statistics" element={<StatisticsPage />} />
 
           {/* <Route path="/about" element={<h1>Про нас</h1>} /> */}
 
