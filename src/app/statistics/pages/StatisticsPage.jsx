@@ -8,25 +8,11 @@ import {
   MenuItem,
   OutlinedInput,
   Chip,
-  Button,
-  CircularProgress
+  CircularProgress,
+  TextField
 } from "@mui/material";
 
 import Grid from "@mui/material/Grid";
-
-import {
-  DatePicker
-} from "@mui/x-date-pickers/DatePicker";
-
-import {
-  LocalizationProvider
-} from "@mui/x-date-pickers/LocalizationProvider";
-
-import {
-  AdapterDayjs
-} from "@mui/x-date-pickers/AdapterDayjs";
-
-import dayjs from "dayjs";
 
 import {
   useEffect,
@@ -42,7 +28,9 @@ import {
   ORDER_STATUS_LABELS
 } from "../../../utils/mappers/OrderLabels";
 
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate
+} from "react-router-dom";
 
 export default function StatisticsPage() {
 
@@ -73,10 +61,10 @@ export default function StatisticsPage() {
     useState([]);
 
   const [dateFrom, setDateFrom] =
-    useState(dayjs().startOf("month"));
+    useState("");
 
   const [dateTo, setDateTo] =
-    useState(dayjs());
+    useState("");
 
   useEffect(() => {
 
@@ -145,16 +133,12 @@ export default function StatisticsPage() {
 
           dateFrom:
             dateFrom
-              ? dayjs(dateFrom)
-                  .startOf("day")
-                  .toISOString()
+              ? `${dateFrom}T00:00:00`
               : null,
 
           dateTo:
             dateTo
-              ? dayjs(dateTo)
-                  .endOf("day")
-                  .toISOString()
+              ? `${dateTo}T23:59:59`
               : null
         });
 
@@ -274,7 +258,7 @@ export default function StatisticsPage() {
 
           </Grid>
 
-          <Grid size={{ xs: 12, md: 4 }}>
+          <Grid size={{ xs: 12, md: 3 }}>
 
             <FormControl fullWidth>
 
@@ -334,37 +318,41 @@ export default function StatisticsPage() {
 
           </Grid>
 
-          <Grid size={{ xs: 12, md: 1.5 }}>
+          <Grid size={{ xs: 12, md: 2 }}>
 
-            <LocalizationProvider
-              dateAdapter={AdapterDayjs}
-            >
-
-              <DatePicker
-                label="Від"
-                value={dateFrom}
-                onChange={setDateFrom}
-                format="DD.MM.YYYY"
-              />
-
-            </LocalizationProvider>
+            <TextField
+              fullWidth
+              type="date"
+              label="Від"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={dateFrom}
+              onChange={(e) =>
+                setDateFrom(
+                  e.target.value
+                )
+              }
+            />
 
           </Grid>
 
-          <Grid size={{ xs: 12, md: 1.5 }}>
+          <Grid size={{ xs: 12, md: 2 }}>
 
-            <LocalizationProvider
-              dateAdapter={AdapterDayjs}
-            >
-
-              <DatePicker
-                label="До"
-                value={dateTo}
-                onChange={setDateTo}
-                format="DD.MM.YYYY"
-              />
-
-            </LocalizationProvider>
+            <TextField
+              fullWidth
+              type="date"
+              label="До"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={dateTo}
+              onChange={(e) =>
+                setDateTo(
+                  e.target.value
+                )
+              }
+            />
 
           </Grid>
 
