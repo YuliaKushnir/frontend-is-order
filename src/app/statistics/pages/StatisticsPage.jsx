@@ -164,10 +164,41 @@ export default function StatisticsPage() {
                 Статуси
               </InputLabel>
 
-              <Select multiple value={statuses} 
+              <Select multiple value={statuses}
                 onChange={(e) => {
                   const value = e.target.value;
 
+                  if (value[value.length - 1] === "ALL") {
+                    setStatuses(["ALL"]);
+                  } else {
+                    setStatuses(value.filter(v => v !== "ALL"));
+                  }
+                }}
+                input={ <OutlinedInput label="Статуси" /> }
+                renderValue={(selected) => (
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }} >
+                    {selected.includes("ALL") ? ( <Chip label="Усі" />
+                    ) : (
+                      selected.map(value => (<Chip key={value} label={ORDER_STATUS_LABELS[value]} />))
+                    )}
+                  </Box>
+                )}
+              >
+
+                <MenuItem value="ALL">
+                  Усі
+                </MenuItem>
+
+                {Object.entries(ORDER_STATUS_LABELS).map(([key, label]) => (
+                  <MenuItem key={key} value={key}>
+                    {label}
+                  </MenuItem>
+                ))}
+              </Select>
+
+              {/* <Select multiple value={statuses} 
+                onChange={(e) => {
+                  const value = e.target.value;
                   if (value.includes("ALL")) {
                     setStatuses(["ALL"]);
                   } else {
@@ -187,7 +218,6 @@ export default function StatisticsPage() {
                   </Box>
                 )}
               >
-
                 <MenuItem value="ALL">
                   Усі
                 </MenuItem>
@@ -197,7 +227,7 @@ export default function StatisticsPage() {
                     {label}
                   </MenuItem>
                 ))}
-              </Select>
+              </Select> */}
             </FormControl>
           </Grid>
 
