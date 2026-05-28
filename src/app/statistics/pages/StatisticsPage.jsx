@@ -264,7 +264,7 @@ export default function StatisticsPage() {
       </Paper>
 
       <Typography fontSize={30} fontWeight="bold" mb={3}>
-        Загальна сума: {total} грн
+        Сума замовлень/нанесень: {total} грн
       </Typography>
 
       {loading ? (
